@@ -1,13 +1,11 @@
 [Compiler] C 語言入門練習 / 01
 ==
 
-**基礎題**
-
-1. Chorld wrote a program to practice C pointer, but his program has
+1. **<基礎題>** Chorld wrote a program to practice C pointer, but his program has
 some bugs. Please debug for him. The program should do things
-right and has no compile warnings (with compile option `Wall`).
+right and has no compile warnings (with compile option `-Wall`).
 
-```
+ ```
 #include <stdio.h>
 void swap_string(char* a_string, char* b_string) {
  int* temp = a_string;
@@ -30,11 +28,11 @@ int main(int argc, char** argv) {
  printf("%s %s!\n");
  return 0;
 }
-```
+ ```
 
-2. Fill the swap procedure to finish this program:
+2. **<基礎題>** Fill the swap procedure to finish this program:
 
-```
+ ```
 #include <stdio.h>
 static void swap(int* a, int* b) {
  // Write your code here!
@@ -46,18 +44,18 @@ int main(int argc, char** argv) {
  printf("%d %d\n", a, b);
  return 0;
 }
-```
+ ```
 
-Compile your program into assembly language (You can use either GCC
+ Compile your program into assembly language (You can use either GCC
 or Clang). For GCC, the command is `gcc -S myprogram.c`. And then
 compile it again with optimize option: `gcc –O2 -S myprogram.c`.
 After reading the two compiled results, could you tell me what did the
 optimizer do?
 
-3. Is there any problem in this program? If your answer is yes, please
+3. **<基礎題>** Is there any problem in this program? If your answer is yes, please
 fix it.
 
-```
+ ```
 #include <stdio.h>
 char* cons_string(const char* s1, const char* s2) {
  char new_string[1024] = {'\0'};
@@ -80,21 +78,19 @@ int main(int argc, char** argv) {
  char* c = cons_string(a, b);
  printf("%s\n", c);
 }
-```
+ ```
 
-**進階題**
+4. **<進階題>** The quick-sort process (`qsort()` in `<stdlib.h>`) is defined as:
 
-4. The quick-sort process (`qsort()` in `<stdlib.h>`) is defined as:
-
-```
+ ```
 void qsort (void* base, size_t num, size_t size,
  int (*compar)(const void*,const void*));
-```
+ ```
 
-Please write a procedure called mysort using same interface as qsort.
+ Please write a procedure called mysort using same interface as qsort.
 You can use follow program to test if your procedure is correct:
 
-```
+ ```
 int compare(const void * a, const void * b) {
  return ( *(int*)a - *(int*)b );
 }
@@ -106,6 +102,6 @@ int i;
  printf ("%d ",values[n]);
  return 0;
 }
-```
+ ```
 
-Excepted output is: `1 2 3 4 5 `.
+ Excepted output is: `1 2 3 4 5 `.
