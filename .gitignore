@@ -1,2 +1,5 @@
 *.o
+*.yy.c
+*.lex.c
+*.yylex.c
 *.tar.gz
