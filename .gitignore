@@ -2,4 +2,5 @@
 *.yy.c
 *.lex.c
 *.yylex.c
+*.yylex.cpp
 *.tar.gz
