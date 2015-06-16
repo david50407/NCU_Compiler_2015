@@ -1,0 +1,5 @@
+PROGRAM feature;
+
+BEGIN
+
+END.

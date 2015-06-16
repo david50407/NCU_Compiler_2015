@@ -1,0 +1,15 @@
+PROGRAM feature;
+
+PROCEDURE myPro;
+BEGIN
+
+END;
+
+FUNCTION fun : integer;
+BEGIN
+
+END;
+
+BEGIN
+
+END.
