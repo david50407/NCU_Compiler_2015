@@ -1,8 +1,10 @@
+#if !defined(__PROJECT_H__)
+#define __PROJECT_H__
 # include <stdlib.h>
 # include <stdio.h>
 extern int      fgetc(FILE *);
 extern int      fprintf(FILE *, const char *, ...);
-//extern int      vfprintf(FILE *, const char *, void *);
+/* extern int      vfprintf(FILE *, const char *, void *); */
 extern int      fclose(FILE *);
 extern int      printf(const char *, ...);
 extern int	_flsbuf();
@@ -27,3 +29,4 @@ extern int toupper(int);
 # include "tempreg.h"
 # include "gen_lib.h"
 # include "gen_code.h"
+#endif /* !defined(__PROJECT_H__) */
