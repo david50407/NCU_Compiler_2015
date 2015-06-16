@@ -5,19 +5,19 @@ all: PB
 
 
 clean: 
-	rm PB.yylex.cpp PB.yy.cpp PB.lex.cpp PB.o
+	rm PB.yylex.c PB.yy.c PB.lex.c PB.o
 
-PB.lex.cpp: PB.l
-	lex -o PB.lex.cpp PB.l
+PB.lex.c: PB.l
+	lex -o PB.lex.c PB.l
 
-PB.yy.cpp: PB.y
-	yacc -o PB.yy.cpp PB.y
+PB.yy.c: PB.y
+	yacc -o PB.yy.c PB.y
 
-PB.yylex.cpp: PB.lex.cpp PB.yy.cpp
-	cat PB.yy.cpp PB.lex.cpp > PB.yylex.cpp
+PB.yylex.c: PB.lex.c PB.yy.c
+	cat PB.yy.c PB.lex.c > PB.yylex.c
 
-PB.o: PB.yylex.cpp
-	gcc -Wall -o PB.o PB.yylex.cpp
+PB.o: PB.yylex.c
+	gcc-4.9 --std=c89 -Wall -o PB.o PB.yylex.c
 
 
 PB: PB.o

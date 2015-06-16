@@ -2,18 +2,20 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+struct I {
+		int count;
+		char name[10];
+};
 struct T {
     int size;
-    struct I {
-        int count;
-        char name[10];
-    } element[256];
+    struct I element[256];
 } ans;
 int compare(const void *A, const void *B) {
     return strcmp(((struct I *)A)->name, ((struct I *)B)->name);
 }
 void print(struct T* ptr) {
-    for (int i = 0; i < ptr->size; ++i) {
+    int i;
+    for (i = 0; i < ptr->size; ++i) {
         if (ptr->element[i].count == 0)
           continue;
         printf("%s %d\n", ptr->element[i].name, ptr->element[i].count);
@@ -34,10 +36,11 @@ int count;
 %token GROUP_END
 %%
 proc   : stmt EQL stmt {
+           int i, j;
 			     memcpy(&$$, &$1, sizeof(struct T));
-           for (int i = 0; i < $3.size; ++i) {
+           for (i = 0; i < $3.size; ++i) {
                char f = 0;
-               for (int j = 0; j < $$.size; ++j) {
+               for (j = 0; j < $$.size; ++j) {
                    if (strcmp($$.element[j].name, $3.element[i].name) == 0) {
                        $$.element[j].count -= $3.element[i].count;
                        f = 1;
@@ -59,10 +62,10 @@ stmt   : nexpr {
 			 }
 			 | nexpr PLUS stmt {
 			     memcpy(&$$, &$1, sizeof(struct T));
-
-           for (int i = 0; i < $3.size; ++i) {
+           int i, j;
+           for (i = 0; i < $3.size; ++i) {
                char f = 0;
-               for (int j = 0; j < $$.size; ++j) {
+               for (j = 0; j < $$.size; ++j) {
                    if (strcmp($$.element[j].name, $3.element[i].name) == 0) {
                        $$.element[j].count += $3.element[i].count;
                        f = 1;
@@ -82,7 +85,8 @@ nexpr  : expr {
 			 }
        | COUNT expr {
 			     memcpy(&$$, &$2, sizeof(struct T));
-			     for (int i = 0; i < $$.size; ++i)
+           int i;
+			     for (i = 0; i < $$.size; ++i)
                $$.element[i].count *= $1;
 			 }
 expr   : element {
@@ -90,9 +94,10 @@ expr   : element {
 			 }
        | element expr {
 			     memcpy(&$$, &$1, sizeof(struct T));
-           for (int i = 0; i < $2.size; ++i) {
+           int i, j;
+           for (i = 0; i < $2.size; ++i) {
                char f = 0;
-               for (int j = 0; j < $$.size; ++j) {
+               for (j = 0; j < $$.size; ++j) {
                    if (strcmp($$.element[j].name, $2.element[i].name) == 0) {
                        $$.element[j].count += $2.element[i].count;
                        f = 1;
@@ -112,7 +117,8 @@ element: element_e {
 			 }
 			 | element_e COUNT {
 			     memcpy(&$$, &$1, sizeof(struct T));
-           for (int i = 0; i < $$.size; ++i)
+           int i;
+           for (i = 0; i < $$.size; ++i)
                $$.element[i].count *= $2;
        }
 			 ;
