@@ -31,6 +31,7 @@ extern TYPE *make_enum_type    (BINDLIST *bl);
 extern TYPE *make_range_type   (EXPR *lo, EXPR *hi);
 extern TYPE *make_array_type   (TYPE *idx, TYPE *elt);
 extern TYPE *make_fieldlist_type (FIELDLIST *fl);
+extern FIELDLIST *make_fieldlist (IDENT *id, TYPE *t, FIELDLIST *fl);
 
 /* STMT routines */
 

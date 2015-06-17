@@ -198,6 +198,21 @@ TYPE *make_fieldlist_type (FIELDLIST *fl)
 }
 
 /**********************************************************************/
+/*                     General Field List constructors                */
+/**********************************************************************/
+
+FIELDLIST *make_fieldlist (IDENT *id, TYPE *t, FIELDLIST *fl)
+{
+  FIELDLIST *list = anew (FIELDLIST);
+	FIELD *field = anew (FIELD);
+	list->this = field;
+	list->this->field_id = id;
+	list->this->field_type = t;
+  list->rest = fl;
+  return list;
+}
+
+/**********************************************************************/
 /*                     General STMT constructors                      */
 /**********************************************************************/
 
