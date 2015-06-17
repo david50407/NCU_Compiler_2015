@@ -286,6 +286,14 @@ STMTLIST *make_stmtlist (STMT *s, STMTLIST *sl)
   return l;
 }
 
+STMTREPEAT *make_stmtrepeat (EXPR *test, STMTLIST *sl)
+{
+  STMTREPEAT *r = anew (STMTREPEAT);
+  r->rpt_expr = test;
+  r->rpt_stmts = sl;
+  return r;
+}
+
 /* specific STMT constructors */
 
 STMT *make_assign_stmt (EXPR *v, EXPR *e)
@@ -327,6 +335,13 @@ STMT *make_casestmt (EXPR *expr, CASELIST *cl)
 {
   STMT *s = make_stmt (StmtCase_);
   s->s.cas = make_stmtcase (expr, cl);
+  return s;
+}
+
+STMT *make_repeatstmt (EXPR *expr, STMTLIST *sl)
+{
+  STMT *s = make_stmt (StmtRepeat_);
+  s->s.rpt = make_stmtrepeat (expr, sl);
   return s;
 }
 

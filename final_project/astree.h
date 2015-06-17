@@ -44,6 +44,7 @@ extern STMTWHILE  *make_stmtwhile  (EXPR *test, STMT *body);
 extern STMTCASE   *make_stmtcase   (EXPR *expr, CASELIST *list);
 extern STMTLIST   *make_stmtlist   (STMT *stmt, STMTLIST *sl);
 extern STMTIF     *make_stmtif     (EXPR *expr, STMT *body, STMT *other);
+extern STMTREPEAT *make_stmtrepeat (EXPR *test, STMTLIST *sl);
 
 /* statement constructor functions */
 
@@ -53,6 +54,7 @@ extern STMT *make_call_stmt    (EXPR *e);
 extern STMT *make_compound_stmt(STMTLIST *sl);
 extern STMT *make_ifstmt       (EXPR *test, STMT *body, STMT *other);
 extern STMT *make_casestmt (EXPR *expr, CASELIST *cl);
+extern STMT *make_repeatstmt   (EXPR *expr, STMTLIST *sl);
 
 /* case constructor functions */
 
