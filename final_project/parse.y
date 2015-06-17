@@ -480,7 +480,7 @@ CaseStatement
           Fill the following rule action and implement the function if you need
           in astree.c to handle this production.
         */
-          { }
+          { $$ = make_casestmt ($2, $4); }
         ;
 
 CaseListElements
@@ -490,7 +490,7 @@ CaseListElements
           Fill the following rule action and implement the function in astree.c 
           if you need.
         */
-          { } 
+          { $$ = make_caselist ($1, $2); } 
         ;
 
 OptCaseListElements
@@ -500,11 +500,11 @@ OptCaseListElements
           if you need.
         */
         :
-          { }
+          { $$ = 0; }
         | ';'
-          { }
+          { $$ = 0; }
         | ';' CaseListElements
-          { }
+          { $$ = $2; }
         ;
 
 CaseListElement
@@ -514,9 +514,9 @@ CaseListElement
           if you need.
         */
         : CaseLabelList ':' Statement
-          { }
+          { $$ = make_casearm ($1, $3); }
         | error
-          { }
+          { $$ = 0; }
         ;
 
 CaseLabelList

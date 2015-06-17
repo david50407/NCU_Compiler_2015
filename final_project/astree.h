@@ -52,6 +52,12 @@ extern STMT *make_whilestmt    (EXPR *test, STMT *body);
 extern STMT *make_call_stmt    (EXPR *e);
 extern STMT *make_compound_stmt(STMTLIST *sl);
 extern STMT *make_ifstmt       (EXPR *test, STMT *body, STMT *other);
+extern STMT *make_casestmt (EXPR *expr, CASELIST *cl);
+
+/* case constructor functions */
+
+extern CASELIST *make_caselist (CASEARM *ca, CASELIST *cl);
+extern CASEARM  *make_casearm  (EXPRLIST *el, STMT *stmt);
 
 /* general functions */
 

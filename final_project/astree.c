@@ -323,6 +323,33 @@ STMT *make_ifstmt (EXPR *test, STMT *body, STMT *other)
   return s;
 }
 
+STMT *make_casestmt (EXPR *expr, CASELIST *cl)
+{
+  STMT *s = make_stmt (StmtCase_);
+  s->s.cas = make_stmtcase (expr, cl);
+  return s;
+}
+
+/**********************************************************************/
+/*                     General CASE constructors                      */
+/**********************************************************************/
+
+CASELIST *make_caselist (CASEARM *ca, CASELIST *cl)
+{
+  CASELIST *cas = anew (CASELIST);
+  cas->this = ca;
+  cas->rest = cl;
+  return cas;
+}
+
+CASEARM *make_casearm (EXPRLIST *el, STMT *stmt)
+{
+  CASEARM *ca = anew (CASEARM);
+  ca->arm_labels = el;
+  ca->arm_stmt = stmt;
+  return ca;
+}
+
 /**********************************************************************/
 /*                     General EXPR constructors                      */
 /**********************************************************************/
