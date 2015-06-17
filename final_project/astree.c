@@ -267,6 +267,14 @@ STMTWHILE *make_stmtwhile (EXPR *test, STMT *body)
   return w;
 }
 
+STMTLIST *make_stmtlist (STMT *s, STMTLIST *sl)
+{
+  STMTLIST *l = anew (STMTLIST);
+  l->this = s;
+  l->rest = sl;
+  return l;
+}
+
 /* specific STMT constructors */
 
 STMT *make_assign_stmt (EXPR *v, EXPR *e)
@@ -288,6 +296,13 @@ STMT *make_whilestmt (EXPR *test, STMT *body)
   STMT *s = make_stmt (StmtWhile_);
   s->s.wh = make_stmtwhile (test, body);
   return s;	
+}
+
+STMT *make_compound_stmt (STMTLIST *sl)
+{
+  STMT *s = make_stmt (StmtCompound_);
+  s->s.comp = sl;
+  return s;
 }
 
 /**********************************************************************/

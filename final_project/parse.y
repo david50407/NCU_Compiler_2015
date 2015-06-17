@@ -439,7 +439,7 @@ CompoundStatement
           Feature 6
           Implement the function in astree.c to handle this production.
         */
-          { }
+          { $$ = make_compound_stmt ($2); }
         ;
 
 Statements
@@ -448,13 +448,13 @@ Statements
           Feature 6 (continue)
           Implement the function in astree.c to handle this production.
         */
-          { }
+          { $$ = make_stmtlist ($1, 0); }
         | Statement ';' Statements
         /*
           Feature 6 (continue)
           Implement the function in astree.c to handle this production.
         */
-          { }
+          { $$ = make_stmtlist ($1, $3); }
         ;
 
 IfStatement

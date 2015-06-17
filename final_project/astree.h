@@ -42,12 +42,14 @@ extern STMT     *make_stmt     (STMTKIND k);
 extern STMTASSIGN *make_stmtassign (EXPR *v, EXPR *e);
 extern STMTWHILE  *make_stmtwhile  (EXPR *test, STMT *body);
 extern STMTCASE   *make_stmtcase   (EXPR *expr, CASELIST *list);
+extern STMTLIST   *make_stmtlist   (STMT *stmt, STMTLIST *sl);
 
 /* statement constructor functions */
 
 extern STMT *make_assign_stmt  (EXPR *v, EXPR *e);
 extern STMT *make_whilestmt    (EXPR *test, STMT *body);
 extern STMT *make_call_stmt    (EXPR *e);
+extern STMT *make_compound_stmt(STMTLIST *sl);
 
 /* general functions */
 
