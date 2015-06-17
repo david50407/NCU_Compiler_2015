@@ -294,6 +294,18 @@ STMTREPEAT *make_stmtrepeat (EXPR *test, STMTLIST *sl)
   return r;
 }
 
+STMTFOR *make_stmtfor (IDENT *id, EXPR *start_expr, int dir_val, EXPR *end_expr, STMT *stmt)
+{
+  STMTFOR *f = anew (STMTFOR);
+  f->for_name = make_binding (id);
+  f->for_init = start_expr;
+  f->for_upward = !!dir_val;
+  f->for_to = end_expr;
+  f->for_stmt = stmt;
+  f->for_limit_obj = NULL;
+  return f;
+}
+
 /* specific STMT constructors */
 
 STMT *make_assign_stmt (EXPR *v, EXPR *e)
@@ -342,6 +354,13 @@ STMT *make_repeatstmt (EXPR *expr, STMTLIST *sl)
 {
   STMT *s = make_stmt (StmtRepeat_);
   s->s.rpt = make_stmtrepeat (expr, sl);
+  return s;
+}
+
+STMT *make_forstmt (IDENT *id, EXPR *start_expr, int dir_val, EXPR *end_expr, STMT *stmt)
+{
+  STMT *s = make_stmt (StmtFor_);
+  s->s.forx = make_stmtfor (id, start_expr, dir_val, end_expr, stmt);
   return s;
 }
 

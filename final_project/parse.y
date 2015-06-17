@@ -549,11 +549,14 @@ ForStatement
           Fill the following rule action and implement the function in astree.c 
           if you need.
         */
-         { }
+         { $$ = make_forstmt ($2, $4, $5, $6, $8); }
         ;
 
 Direction
-        : TO_ | DOWNTO_
+        : TO_
+         { $$ = TRUE; }
+        | DOWNTO_
+         { $$ = FALSE; }
         ;
 
 /*
