@@ -183,6 +183,20 @@ TYPE *make_id_type (IDENT *id)
   return make_bind_type (make_binding (id));
 }
 
+TYPE *make_array_type (TYPE *idx, TYPE *elt)
+{
+  TYPE *t = make_type (TypeArray_);
+  t->t.arr = make_typearray (idx, elt);
+  return t;
+}
+
+TYPE *make_fieldlist_type (FIELDLIST *fl)
+{
+  TYPE *t = make_type (TypeRecord_);
+  t->t.rec = fl;
+	return t;
+}
+
 /**********************************************************************/
 /*                     General STMT constructors                      */
 /**********************************************************************/

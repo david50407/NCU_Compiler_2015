@@ -211,13 +211,13 @@ Type
         */
         : SimpleType
         | ARRAY_ '[' SimpleType EltType
-          { }
+          { $$ = make_array_type ($3, $4); }
         | RECORD_ FieldList END_
-          { }
+          { $$ = make_fieldlist_type ($2); }
         | RECORD_ END_
           { }
         | '^' ID_
-          { }
+          { $$ = make_id_type ($2); }
         | error
           { $$ = the_err_type; }
         ;
@@ -230,7 +230,7 @@ EltType
           Feature 3 (continue)
           Call your pre-implemented function here.
         */
-          { }
+          { $$ = make_array_type ($2, $3); }
         ;
 
 SimpleType

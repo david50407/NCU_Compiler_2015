@@ -29,6 +29,8 @@ extern TYPE *make_bind_type    (BINDING *b);
 extern TYPE *make_id_type      (IDENT *id);
 extern TYPE *make_enum_type    (BINDLIST *bl);
 extern TYPE *make_range_type   (EXPR *lo, EXPR *hi);
+extern TYPE *make_array_type   (TYPE *idx, TYPE *elt);
+extern TYPE *make_fieldlist_type (FIELDLIST *fl);
 
 /* STMT routines */
 
