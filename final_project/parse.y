@@ -159,7 +159,7 @@ VariableDeclaration
         /*
           Feature 2
           Implement the make_var_decl function call in astree.c to initialize AST node.
-          Hint: Call make_var_decl function pre-defined in astree.c to construct DECL node.
+          Hint: Call make_decl function pre-defined in astree.c to construct DECL node.
         */
           { 
             DECL *d = make_var_decl ($1, $3);

@@ -79,7 +79,9 @@ FORMAL *make_formal (MODEWHICH m, TYPE *t)
 
 DECL *make_var_decl (IDENT *id, TYPE *t)
 {
-
+  DECL *d = make_decl (DeclVar_, id);
+  d->d.var = make_vardef (t);
+  return d;
 }
 
 DECL *make_const_decl (IDENT *id, EXPR *c)
