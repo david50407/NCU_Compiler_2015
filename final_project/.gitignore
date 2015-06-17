@@ -1,3 +1,8 @@
 parse.output
 parse.tab.c
 parse.tab.h
+feature_test/*.s
+feature_test/*.check
+feature_test/*.alloc
+feature_test/*.token
+feature_test/*.parse
