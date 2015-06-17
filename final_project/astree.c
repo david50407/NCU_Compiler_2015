@@ -267,6 +267,15 @@ STMTWHILE *make_stmtwhile (EXPR *test, STMT *body)
   return w;
 }
 
+STMTIF *make_stmtif (EXPR *test, STMT *body, STMT *other)
+{
+  STMTIF *i = anew (STMTIF);
+  i->if_expr = test;
+  i->if_then = body;
+	i->if_else = other;
+  return i;
+}
+
 STMTLIST *make_stmtlist (STMT *s, STMTLIST *sl)
 {
 	/* Statement might be empty (STMT pointer will be NULL)*/
@@ -304,6 +313,13 @@ STMT *make_compound_stmt (STMTLIST *sl)
 {
   STMT *s = make_stmt (StmtCompound_);
   s->s.comp = sl;
+  return s;
+}
+
+STMT *make_ifstmt (EXPR *test, STMT *body, STMT *other)
+{
+  STMT *s = make_stmt (StmtIf_);
+  s->s.ifx = make_stmtif (test, body, other);
   return s;
 }
 

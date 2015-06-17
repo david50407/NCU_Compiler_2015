@@ -463,7 +463,7 @@ IfStatement
           Feature 7
           Implement the function in astree.c to handle this production.
         */
-          { }
+          { $$ = make_ifstmt ($2, $4, $5); }
         ;
 
 OptElse
