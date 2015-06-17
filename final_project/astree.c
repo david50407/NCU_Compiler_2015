@@ -269,6 +269,8 @@ STMTWHILE *make_stmtwhile (EXPR *test, STMT *body)
 
 STMTLIST *make_stmtlist (STMT *s, STMTLIST *sl)
 {
+	/* Statement might be empty (STMT pointer will be NULL)*/
+	if (s == NULL) return sl;
   STMTLIST *l = anew (STMTLIST);
   l->this = s;
   l->rest = sl;
