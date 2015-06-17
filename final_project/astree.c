@@ -15,7 +15,11 @@ PROGRAM *make_program (DECLLIST *dl, BLOCK *b)
 
 BLOCK *make_block (DECLLIST *dl, STMTLIST *s)
 {
-
+  /* Malloc new BLOCK */
+  BLOCK *blk = anew (BLOCK);
+  blk->block_decls = dl;
+  blk->block_stmts = s;
+  return blk;
 }
 
 /**********************************************************************/
