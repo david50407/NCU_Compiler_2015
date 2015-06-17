@@ -10,6 +10,7 @@ extern DECL     *make_decl     (DECLKIND k, IDENT *id);
 
 extern VARDEF      *make_vardef (TYPE *t);
 extern FORMAL      *make_formal (MODEWHICH m, TYPE *t);
+extern PROCFUNCDEF *make_proc   (DECLLIST *dl, TYPE *t, BLOCK *blk);
 
 extern DECL   *make_program_decl  (IDENT *id);
 extern DECL   *make_var_decl      (IDENT *id, TYPE *t);
@@ -17,6 +18,7 @@ extern DECL   *make_const_decl    (IDENT *id, EXPR *c);
 extern DECL   *make_type_decl     (IDENT *id, TYPE *t);
 extern DECL   *make_formal_decl   (IDENT *id, MODEWHICH m, TYPE *t);
 extern DECL   *make_special_decl  (IDENT *id, SPECIALWHICH skind);
+extern DECL   *make_procfunc_decl (IDENT *id, DECLLIST *dl, IDENT *tid, BLOCK *blk);
 
 /* TYPE routines */
 

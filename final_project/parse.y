@@ -280,7 +280,7 @@ ProcedureDeclaration
 	      Implement the make_procfunc_decl function to handle this production.
 	      Hint: You can read PROCFUNCDEF and DECL which pre-defined in struct.h. 
 	    */
-          { }
+          { $$ = make_procfunc_decl ($2, $3, 0, $5); }
         ;
 
 OptFormalParameters
@@ -335,7 +335,7 @@ FunctionDeclaration
           Implement the make_procfunc_decl function to handle this production.
           Hint: You can read PROCFUNCDEF and DECL which pre-defined in struct.h. 
         */
-          { }
+          { $$ = make_procfunc_decl ($2, $3, $5, $7); }
         ;
 
 Statement

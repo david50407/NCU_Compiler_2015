@@ -75,6 +75,15 @@ FORMAL *make_formal (MODEWHICH m, TYPE *t)
   return f;
 }
 
+PROCFUNCDEF *make_proc (DECLLIST *dl, TYPE *t, BLOCK *blk)
+{
+  PROCFUNCDEF *proc = anew(PROCFUNCDEF);
+  proc->proc_formals = dl;
+  proc->proc_result_type = t;
+  proc->proc_block = blk;
+  return proc;
+}
+
 /* specific DECL constructors */
 
 DECL *make_var_decl (IDENT *id, TYPE *t)
@@ -114,6 +123,13 @@ DECL *make_special_decl (IDENT *id, SPECIALWHICH skind)
 {
   DECL *d = make_decl (DeclSpecial_, id);
   d->d.spc = skind;
+  return d;
+}
+
+DECL *make_procfunc_decl (IDENT *id, DECLLIST *dl, IDENT *tid, BLOCK *blk)
+{
+  DECL *d = make_decl (DeclProcFunc_, id);
+  d->d.proc = make_proc (dl, (tid == NULL ? 0 : make_id_type (tid)), blk);
   return d;
 }
 
