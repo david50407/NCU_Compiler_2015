@@ -13,7 +13,7 @@ extern int	_flsbuf();
 # include <string.h>
 extern int strcasecmp(const char *, const char *);
 # include <ctype.h>
-extern int toupper(int);
+inline int toupper(int);
 # include "structs.h"
 # include "mpc.h"
 # include "scan.h"

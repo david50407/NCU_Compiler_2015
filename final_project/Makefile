@@ -1,5 +1,5 @@
 CC = gcc
-CFLAGS = -g -Wall --std=c90
+CFLAGS = -g -Wall --std=c99
 YACC = bison
 YFLAGS = -t -d -v
 OBJS = mpc.o scan.o parse.tab.o astree.o symtab.o types.o decls.o \
